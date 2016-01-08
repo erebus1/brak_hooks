@@ -14,3 +14,6 @@ pip install --user --upgrade git+git://github.com/bartekbrak/brak_hooks.git
 [hooks]
 pretxncommit.isort = python:brak_hooks.code.isort
 ```
+
+# config
+Put 'no-isort` anywhere in the commit message to skip the hook.
