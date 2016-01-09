@@ -1,4 +1,4 @@
-def isort_hook(ui, repo, hooktype, node, pending, **kwargs):
+def isort_hook(ui, repo, hooktype, node, **kwargs):
     try:
         import isort
     except ImportError:
