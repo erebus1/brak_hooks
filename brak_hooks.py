@@ -2,7 +2,7 @@ def isort_hook(ui, repo, hooktype, node, **kwargs):
     try:
         import isort
     except ImportError:
-        ui.warn('You need the isort python module to use the isorthook')
+        ui.warn('install isort (outside virtual env) to run this hook')
         return True  # Failure
 
     errors = 0
