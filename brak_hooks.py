@@ -29,13 +29,15 @@ def isort_hook(ui, repo, hooktype, node, **kwargs):
     else:
         ui.warn('isort_hook requires isort>=3.9.5\n\n')
         return True
-    errors = 0
     ctx = repo[node]
     if 'no-isort' in ctx.description():
         return 0
 
+    files_not_sorted = []
     for filename in ctx.files():
         attempt = isort.SortImports(file_path=filename, check=True)
         if attempt.incorrectly_sorted:
-            errors += 1
-    return errors
+		    files_not_sorted.append(filename)
+    if files_not_sorted:
+	    ui.warn('%s\nneed to be isorted\n\n' % '\n'.join(files_not_sorted))
+    return len(files_not_sorted)
