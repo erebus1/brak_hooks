@@ -12,7 +12,7 @@ pip install --user --upgrade git+git://github.com/bartekbrak/brak_hooks.git
 ```
 #.hg/hgrc
 [hooks]
-pretxncommit.isort = python:brak_hooks.code.isort
+pretxncommit.isort = python:brak_hooks.isort_hook
 ```
 
 Due to the way isort discovers third party packages, this hook will (and
