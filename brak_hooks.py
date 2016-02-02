@@ -1,5 +1,5 @@
 import os
-
+import os.path
 
 def isort_hook(ui, repo, hooktype, node, **kwargs):
     try:
@@ -35,6 +35,9 @@ def isort_hook(ui, repo, hooktype, node, **kwargs):
 
     files_not_sorted = []
     for filename in ctx.files():
+	_, file_extension = os.path.splitext(filename)
+	if not os.path.isfile(filename) or file_extension != '.py':
+	  continue
         attempt = isort.SortImports(file_path=filename, check=True)
         if attempt.incorrectly_sorted:
 		    files_not_sorted.append(filename)
